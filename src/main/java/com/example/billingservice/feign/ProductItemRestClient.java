@@ -14,8 +14,9 @@ import javax.ws.rs.QueryParam;
 
 public interface ProductItemRestClient {
     @GetMapping(path = "/products")
-    PagedModel<Product> pageProducts(@RequestParam(value="page") int page,
-                                     @RequestParam(value="size")int size);
+    PagedModel<Product> pageProducts();
+    //PagedModel<Product> pageProducts(@RequestParam(value="page") int page,
+    //                                 @RequestParam(value="size")int size);
     @GetMapping(path = "/products/{id}")
     Product getProductById(@PathVariable Long id);
 }
