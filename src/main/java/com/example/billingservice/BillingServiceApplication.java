@@ -44,6 +44,30 @@ public class BillingServiceApplication {
                 productItemRepository.save(productItem);
 
             });
+            Customer customer2=customerRestClient.getCustomerById(2L);
+            Bill bill2= billRepository.save(new Bill(null, new Date(), null, customer2.getId(), null));
+            productPagedModel.forEach(p -> {
+                ProductItem productItem=new ProductItem();
+                productItem.setPrice(p.getPrice());
+                productItem.setQuantity(1+ new Random().nextInt(100));
+                productItem.setProductID(p.getId());
+                productItem.setBill(bill2);
+                productItemRepository.save(productItem);
+
+            });
+            Customer customer3=customerRestClient.getCustomerById(3L);
+            Bill bill3= billRepository.save(new Bill(null, new Date(), null, customer3.getId(), null));
+            productPagedModel.forEach(p -> {
+                ProductItem productItem=new ProductItem();
+                productItem.setPrice(p.getPrice());
+                productItem.setQuantity(1+ new Random().nextInt(100));
+                productItem.setProductID(p.getId());
+                productItem.setBill(bill3);
+                productItemRepository.save(productItem);
+
+            });
+
+
         };
     }
 
